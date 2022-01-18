@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package com.newsroom.postcomments.rpc;
+
+message CreatePostRequest {
+	string postID = 1;
+	string userID = 2;
+	PostLocation postLocation = 3;
+	string postTitle = 4;
+	string postText = 5;
+	repeated PostBody contents = 6;
+	repeated string userLikes = 7;
+	int32 likes = 8;
+	repeated string userShares = 9;
+	int32 shares = 10;
+	repeated string comments = 11;
+	repeated string userDislikes = 12;
+	int32 dislikes = 13;
+}
+
+service CreatePostService {
+	rpc createPost (CreatePostRequest) returns (ServiceResponse);
+}
+
+message DeletePostRequest {
+	string postID = 1;
+}
+
+service DeletePostService {
+	rpc deletePost (DeletePostRequest) returns (ServiceResponse);
+}
+
+message UpdatePostRequest {
+	string postID = 1;
+	PostLocation postLocation = 2;
+	string postTitle = 3;
+	string postTest = 4;
+	repeated PostBody contents = 5;
+}
+
+service UpdatePostService {
+	rpc updatePost (UpdatePostRequest) returns (ServiceResponse);
+}
+
+message UserLikeRequest {
+	string postID = 1;
+	string userID = 2;
+}
+
+service UserLikeService {
+	rpc like (UserLikeRequest) returns (ServiceResponse);
+}
+
+message UserShareRequest {
+	string postID = 1;
+	string userID = 2;
+}
+
+service UserShareService {
+	rpc share (UserShareRequest) returns (ServiceResponse);
+}
+
+message AddCommentRequest {
+	Comment comment = 2;
+}
+
+service AddCommentService {
+	rpc addComment (AddCommentRequest) returns (ServiceResponse);
+}
+
+message DeleteComentRequest {
+	string postID = 1;
+	string commentID = 2;
+}
+
+service DeleteCommentService {
+	rpc deleteComment (DeleteComentRequest) returns (ServiceResponse);
+}
+
+message UpdateCommentRequest {
+	string postID = 1;
+	string commentID = 2;
+	string newComment = 3;
+}
+
+service UpdateCommentService {
+	rpc updateComment (UpdateCommentRequest) returns (ServiceResponse);
+}
+
+message ServiceResponse {
+	bool success = 1;
+	Data data = 2;
+}
+
+message Data {
+	string data = 1;
+}
+
+message PostLocation {
+	double latitude = 1;
+	double longitude = 2;
+	string address = 3;
+}
+
+message PostBody {
+	string postURL = 1;
+	string postType = 2;
+}
+
+message Comment {
+	string commentID = 1;
+	string postID = 2;
+	string userID = 4;
+	string comment = 3;
+}

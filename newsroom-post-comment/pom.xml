@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.2</version>
+	</parent>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring-boot-starter>2.6.2</spring-boot-starter>
+		<spring-boot-starter-web>2.6.2</spring-boot-starter-web>
+		<spring-boot-starter-data-mongodb>2.6.2</spring-boot-starter-data-mongodb>
+	</properties>
+
+	<groupId>com.newsroom</groupId>
+	<artifactId>newsroom-post-comment</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+	<name>newsroom-post-comment</name>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${spring-boot-starter}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring-boot-starter-web}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-mongodb</artifactId>
+				<version>${spring-boot-starter-data-mongodb}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>newsroom-post-comment-mongo</module>
+		<module>newsroom-post-comment-server</module>
+		<module>newsroom-post-comment-rpc-proto</module>
+	</modules>
+</project>
